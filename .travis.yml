@@ -1,0 +1,15 @@
+os: 
+    - linux
+
+language: cpp
+
+compiler: gcc
+
+before_install:
+  - if [ $TRAVIS_OS_NAME = "linux" ]; then sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y; fi
+  - if [ $TRAVIS_OS_NAME = "linux" ]; then sudo apt-get update -q; fi
+  - if [ $TRAVIS_OS_NAME = "linux" ]; then sudo apt-get install g++-8 libstdc++-8-dev curl -y; fi
+  - if [ $TRAVIS_OS_NAME = "linux" ]; then sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 90; fi
+  - if [ $TRAVIS_OS_NAME = "linux" ]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 90; fi
+
+script: sudo make install
