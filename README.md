@@ -22,6 +22,9 @@ sudo make install
 ```
 If you get `<curl/curl.h> does not exist..` error, try installing `curl` package. (Ubuntu) `sudo apt install curl`
 
+If you get `make: command not found` error, try installing `make` package. (Ubuntu) `sudo apt install make`
+
+
 ## Usage
 ```
 Usage: bua COMMAND
