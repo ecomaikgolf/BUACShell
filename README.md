@@ -15,6 +15,8 @@ Operating Systems:
    * Ubuntu 16.04 (Tested)
    * Archlinux (Tested)
 
+There is no need to execute `setup.sh` as `make` does it for you
+
 ## Updating
 ```
 cd BUACShell
