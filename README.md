@@ -20,6 +20,8 @@ cd BUACShell
 git pull -f
 sudo make install
 ```
+If you get `<curl/curl.h> does not exist..` error, try installing `curl` package. (Ubuntu) `sudo apt install curl`
+
 ## Usage
 ```
 Usage: bua COMMAND
