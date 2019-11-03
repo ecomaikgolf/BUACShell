@@ -11,8 +11,9 @@ Dependencies:
  * libcurl
 
 Operating Systems:
- * GNU/Linux: Supported
- * Linux Subsystem for Windows: Not tested
+ * GNU/Linux
+   * Ubuntu 16.04 (Tested)
+   * Archlinux (Tested)
 
 ## Updating
 ```
