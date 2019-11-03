@@ -20,7 +20,7 @@ cd BUACShell
 git pull -f
 sudo make install
 ```
-If you get `<curl/curl.h> does not exist..` error, try installing `curl` package. (Ubuntu) `sudo apt install curl`
+If you get `<curl/curl.h> does not exist..` error, try installing `libcurl4-gnutls-dev` package or similar provider. (Ubuntu) `sudo apt install  libcurl4-gnutls-dev`
 
 If you get `make: command not found` error, try installing `make` package. (Ubuntu) `sudo apt install make`
 
