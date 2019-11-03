@@ -116,13 +116,13 @@ static const string special_char[] = {
     "á", "é", "í", "ó", "ú", "ñ", "Ñ"
 };
 
-#define NUM_VOWELS 7
+#define NUM_SPECIAL_CHAR 7
 
 /* Accent managing */
 string& parseString(string& str) {
     for(unsigned i = 0; i < str.size(); i++) {
         if((int) str[i] < 0) {
-            for(int j = 0; j < NUM_VOWELS; j++)
+            for(int j = 0; j < NUM_SPECIAL_CHAR; j++)
                 if((int) str[i] == special_char_int[j])
                     str.replace(i, 1, special_char[j]);
         }
