@@ -11,6 +11,7 @@ install:
 	$(CC) $(OPTS) -o $(NAME) bua.cpp $(LIB) 
 	sudo cp bua /usr/bin/
 	sudo chown root /usr/bin/bua && sudo chmod 4755 /usr/bin/bua
+	rm bua
 	sudo -u $(SUDO_USER) ./setup.sh
 	$(info )
 	$(info [*] Developed by: )
