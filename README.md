@@ -12,7 +12,6 @@ Dependencies:
 
 Operating Systems:
  * GNU/Linux: Supported
- * OSX: Compilation tested
  * Linux Subsystem for Windows: Not tested
 
 ## Updating
