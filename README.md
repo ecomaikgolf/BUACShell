@@ -106,3 +106,7 @@ It manages authentication process automatically so you just have to setup userna
 This project is being developed as closed-source until we solve some burocracy.
 
 BUACShell will be merged with UACShell on a single project.
+
+# BUACShell installation video
+[![asciicast](https://asciinema.org/a/cr0xmAtLnrxnUdh4k3nNG3dpk.svg)](https://asciinema.org/a/cr0xmAtLnrxnUdh4k3nNG3dpk)
+
