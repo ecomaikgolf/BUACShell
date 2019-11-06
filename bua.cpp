@@ -168,7 +168,7 @@ ostream& operator<<(ostream& os, const Book& b) {
            << b.author << '\n'
            << b.details << '\n'
            << RED("The book has been reserved")
-           << b.returnTime << "\n\n";
+           << RED(b.returnTime) << "\n\n";
     }
     return os;
 }
@@ -281,13 +281,14 @@ bool saveReservation(vector<Book> books, string outputFile = ReservationFile, co
     if(!ofs.is_open())
         return false;
 
-    bool renewedSuccesfully = true;
     for(unsigned i = 0; i < books.size(); i++) {
+        if(books[i].renewed == false) {
+            cout << YELLOW("[?] Due to the library backend, we cannot retrieve non-renewed book dates") << endl;
+            books[i].returnTime = "Unknown, check biblioteca.ua.es";
+        }
         ofs << books[i];
-        if(books[i].renewed == false)
-            renewedSuccesfully = false;
     }
-    return renewedSuccesfully;
+    return true;
 }
 
 /* Disallow character printing while stdin */
