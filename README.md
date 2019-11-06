@@ -8,12 +8,19 @@ cd BUACShell
 sudo make install
 ```
 Dependencies: 
- * libcurl
+ * libcurl (`libcurl4-openssl-dev`)
 
 Operating Systems:
  * GNU/Linux
    * Ubuntu 16.04 (Tested)
    * Archlinux (Tested)
+
+There is no need to execute `setup.sh` as `sudo make install` does it for you
+
+### Common errors
+* `<curl/curl.h> does not exist...`: try installing `libcurl4-openssl-dev` package. (Ubuntu) `sudo apt install libcurl4-openssl-dev`
+
+* `make: command not found`: try installing `make` package. (Ubuntu) `sudo apt install make`
 
 ## Updating
 ```
@@ -21,10 +28,6 @@ cd BUACShell
 git pull -f
 sudo make install
 ```
-If you get `<curl/curl.h> does not exist..` error, try installing `libcurl4-gnutls-dev` package or similar provider. (Ubuntu) `sudo apt install  libcurl4-gnutls-dev` or `sudo apt install  libcurl4-openssl-dev`
-
-If you get `make: command not found` error, try installing `make` package. (Ubuntu) `sudo apt install make`
-
 
 ## Usage
 ```

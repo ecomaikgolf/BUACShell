@@ -1,18 +1,24 @@
 /*
  * Unofficial terminal application for
  * the University of Alicante library
+ * written in C++
  *
  * Developed by:
- *  - Ignacio Encinas Rubio
- *  - Ernesto Martínez García <twitter.com/ecomaikgolf>
+ *  - Ignacio Encinas Rubio [1]
+ *  - Ernesto Martínez García [1]
+ *
+ *  [1] Computer Science, University of Alicante Polytechnic School
  *
  * Features:
  *  - Lightweight (~70K)
  *  - Fast (C++)
  *  - Easy build from source (make)
- *  - Non intrusive dependencies (libcurl)
- *  - Scriptable with cron
+ *  - Non bloated with dependencies (libcurl)
+ *  - Scriptable (cron)
+ *  - Autologin protected with system permissions
  *  - Open Source!
+ * 
+ *  https://github.com/ecomaikgolf/BUACShell
  */
 
 #include <iostream>
