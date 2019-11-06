@@ -158,10 +158,10 @@ ostream& operator<<(ostream& os, const Book& b) {
            << GREEN("Renewed until")
            << GREEN(b.returnTime) << "\n\n";
     } else {
-        os << RED(b.name) 
+        os << RED(b.name)  << '\n'
            << b.author << '\n'
            << b.details << '\n'
-           << RED("The book has been reserved: ")
+           << RED("The book has been reserved")
            << b.returnTime << "\n\n";
     }
     return os;
@@ -214,6 +214,7 @@ vector<Book> parseBooks(const string &str) {
             books.push_back(book);
         } else if(aux.find("El documento tiene reserva") != string::npos) {
             Book book;
+            book.renewed = false;
             for(unsigned i = 0; i < 4; i++)
                 getline(tmp, aux);
 
