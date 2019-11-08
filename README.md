@@ -60,7 +60,7 @@ As the file is stored in `home`, modern distributions (as Ubuntu) allow transpar
 
 This way, you benefit from a passwordless login while your credentials stay **a bit more** safe.
 
-Also we need sudo to install to move the binary to `/usr/bin`
+Also we need sudo to move the binary to `/usr/bin`
 ### What happens if the library software changes?
 BUACShell won't work.
 
