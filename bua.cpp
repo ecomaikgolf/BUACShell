@@ -445,6 +445,7 @@ bool setup_files() {
 
 int main(int argc, char *argv[]){
     bool ask_from_terminal = false;
+    bool dont_save_reservation = false;
 
     if(!setup_files()) {
         return -1;
@@ -460,8 +461,11 @@ int main(int argc, char *argv[]){
         cout << RED("[!] Local cache") << RED(ReservationFile) << RED("is missing") << endl;
         return -1;
     case Renew: 
-        if(argc > 2 && !strcmp(argv[2], "-f"))
+        if(argc > 2 && !strcmp(argv[2], "-f")) {
             ask_from_terminal = true;
+            /* Does not save the reservation cache if you renew with -f */
+            dont_save_reservation = true;
+        }
         break;
     case Error:
         return Args::Error;
@@ -523,7 +527,7 @@ int main(int argc, char *argv[]){
 
     if(books.size() == 0) {
         cout << YELLOW("[*] You don't have any pending loan ") << '\n';
-    } else if(saveReservation(books) == false) {
+    } else if(!dont_save_reservation && saveReservation(books) == false) {
         cout << YELLOW("[*] We could not update the cache ") << ReservationFile << '\n';
     }
 
