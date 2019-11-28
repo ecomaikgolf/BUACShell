@@ -60,16 +60,16 @@ static const unsigned int TRESHOLD = 40000;
                     << " \033[0m"  \
 
 #define CYAN(x)   "\033[1;36m"     \
-                     << x          \
-                     << " \033[0m" \
+                    << x           \
+                    << " \033[0m"  \
 
 #define RED(x)    "\033[1;31m"     \
                     << x           \
                     << " \033[0m"  \
 
 #define YELLOW(x) "\033[1;33m"     \
-                   << x            \
-                   << " \033[0m"   \
+                    << x           \
+                    << " \033[0m"  \
 
 /* User file identifier */
 #define bua "[bua]"
