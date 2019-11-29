@@ -324,10 +324,10 @@ bool saveReservation(vector<Book> books, string outputFile = ReservationFile, co
         return false;
 
     for(unsigned i = 0; i < books.size(); i++) {
-        if(books[i].renewed == false) {
+        /*if(books[i].renewed == false) {
             cout << YELLOW("[?] Due to the library backend, we cannot retrieve non-renewed book dates") << endl;
             books[i].returnTime = "Unknown, check biblioteca.ua.es";
-        }
+        }*/
         ofs << books[i];
     }
     return true;
