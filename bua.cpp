@@ -185,41 +185,35 @@ string& cleanStr(string &str, const char delimiter) {
     return str;
 }
 
-
-void parseTitle(string &title){
-    title.erase(0, 7);
-    title.erase(title.size()-5, 5);
-}
-
-void parseDate(string &date){
-    date.erase(0, 11);
-}
-
+/*
+ * Feature added by https://github.com/sherlockelemental
+ * Checks your reservation file for previously renewed books. If some
+ * of these books was requested and you can't renew it again the return time
+ * won't be lost.
+ *
+ * Significant changes made. It is possible that this code contains some errors
+ * until we are able to test it.
+ */
 void parseBlockedBooks(vector<Book> &books){
-    string blockedName, blockedReturn, aux;
-    bool blocked;
-    int index = 0;
-    ifstream inb;
-    inb.open(ReservationFile, ios::in);
-    while(getline(inb, blockedName)){
-        blocked = false;
-        parseTitle(blockedName);
-        for(unsigned i = 0; i < books.size() && !blocked; i++){
-            if(books[i].name == blockedName && !books[i].renewed){
-                blocked = true;
-                index = i;
+    ifstream reservationFile(ReservationFile);
+
+    if(!reservationFile)
+        return;
+
+    string storedBook[5];
+    while(getline(reservationFile, storedBook[0])){
+        
+        /* We store the book information and the empty line after every book */
+        for(int i = 1; i < 5; i++)
+            getline(reservationFile, storedBook[i]);
+
+        for(unsigned i = 0; i < books.size(); i++){
+            if(storedBook[0].find(books[i].name) != string::npos) {
+                /* We erase the color characters */
+                storedBook[3].erase(0, 35);
+                books[i].returnTime = storedBook[3].substr(0, storedBook[3].find(' '));
             }
         }
-        getline(inb, aux);//Author
-        getline(inb, aux);
-        getline(inb, aux);//Renewed unitl date
-        if(blocked){
-            stringstream ss = stringstream(aux);
-            ss >> aux >> aux >> blockedReturn;
-            parseDate(blockedReturn);
-            books[index].returnTime = blockedReturn;
-        }
-        getline(inb, aux);//a final end of line
     }
 }
 
