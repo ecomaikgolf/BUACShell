@@ -208,7 +208,7 @@ void parseBlockedBooks(vector<Book> &books){
             getline(reservationFile, storedBook[i]);
 
         for(unsigned i = 0; i < books.size(); i++){
-            if(storedBook[0].find(books[i].name) != string::npos) {
+            if(storedBook[0].find(books[i].name) != string::npos && !books[i].renewed) {
                 /* We erase the color characters */
                 storedBook[3].erase(0, 35);
                 books[i].returnTime = storedBook[3].substr(0, storedBook[3].find(' '));
