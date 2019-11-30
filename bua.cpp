@@ -185,6 +185,45 @@ string& cleanStr(string &str, const char delimiter) {
     return str;
 }
 
+
+void parseTitle(string &title){
+    title.erase(0, 7);
+    title.erase(title.size()-5, 5);
+}
+
+void parseDate(string &date){
+    date.erase(0, 11);
+}
+
+void parseBlockedBooks(vector<Book> &books){
+    string blockedName, blockedReturn, aux;
+    bool blocked;
+    int index = 0;
+    ifstream inb;
+    inb.open(ReservationFile, ios::in);
+    while(getline(inb, blockedName)){
+        blocked = false;
+        parseTitle(blockedName);
+        for(unsigned i = 0; i < books.size() && !blocked; i++){
+            if(books[i].name == blockedName && !books[i].renewed){
+                blocked = true;
+                index = i;
+            }
+        }
+        getline(inb, aux);//Author
+        getline(inb, aux);
+        getline(inb, aux);//Renewed unitl date
+        if(blocked){
+            stringstream ss = stringstream(aux);
+            ss >> aux >> aux >> blockedReturn;
+            parseDate(blockedReturn);
+            books[index].returnTime = blockedReturn;
+        }
+        getline(inb, aux);//a final end of line
+    }
+}
+
+
 /* Parses renewed books from an HTML */
 vector<Book> parseBooks(const string &str) {
     vector<Book> books;
@@ -235,6 +274,9 @@ vector<Book> parseBooks(const string &str) {
             books.push_back(book);
         }
     }
+    
+    parseBlockedBooks(books);
+    
     cout << endl;
     for(unsigned i = 0; i < books.size(); i++)
         cout << books[i];
@@ -282,10 +324,10 @@ bool saveReservation(vector<Book> books, string outputFile = ReservationFile, co
         return false;
 
     for(unsigned i = 0; i < books.size(); i++) {
-        if(books[i].renewed == false) {
+        /*if(books[i].renewed == false) {
             cout << YELLOW("[?] Due to the library backend, we cannot retrieve non-renewed book dates") << endl;
             books[i].returnTime = "Unknown, check biblioteca.ua.es";
-        }
+        }*/
         ofs << books[i];
     }
     return true;
