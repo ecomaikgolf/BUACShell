@@ -161,13 +161,13 @@ ostream& operator<<(ostream& os, const Book& b) {
         os << CYAN(b.name) << '\n'
            << b.author << '\n'
            << b.details << '\n'
-           << GREEN("Renewed until")
+           << GREEN("Renewed until:")
            << GREEN(b.returnTime) << "\n\n";
     } else {
         os << RED(b.name)  << '\n'
            << b.author << '\n'
            << b.details << '\n'
-           << RED("The book has been reserved")
+           << RED("Couldn't renew")
            << RED(b.returnTime) << "\n\n";
     }
     return os;
@@ -210,7 +210,7 @@ void parseBlockedBooks(vector<Book> &books){
         for(unsigned i = 0; i < books.size(); i++){
             if(storedBook[0].find(books[i].name) != string::npos && !books[i].renewed) {
                 /* We erase the color characters */
-                storedBook[3].erase(0, 35);
+                storedBook[3].erase(0, 36);
                 books[i].returnTime = storedBook[3].substr(0, storedBook[3].find(' '));
             }
         }
@@ -317,13 +317,9 @@ bool saveReservation(vector<Book> books, string outputFile = ReservationFile, co
     if(!ofs.is_open())
         return false;
 
-    for(unsigned i = 0; i < books.size(); i++) {
-        /*if(books[i].renewed == false) {
-            cout << YELLOW("[?] Due to the library backend, we cannot retrieve non-renewed book dates") << endl;
-            books[i].returnTime = "Unknown, check biblioteca.ua.es";
-        }*/
+    for(unsigned i = 0; i < books.size(); i++)
         ofs << books[i];
-    }
+
     return true;
 }
 
