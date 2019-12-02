@@ -10,7 +10,7 @@
  *  [1] Computer Science, University of Alicante Polytechnic School
  *
  * Features:
- *  - Lightweight (~70K)
+ *  - Lightweight (~60K)
  *  - Fast (C++)
  *  - Easy build from source (make)
  *  - Non bloated with dependencies (libcurl)
