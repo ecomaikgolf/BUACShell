@@ -6,9 +6,11 @@ LIB=-lcurl
 main:
 	$(CC) $(OPTS) -o $(NAME) bua.cpp $(LIB) 
 	sudo chown root bua && sudo chmod 4755 bua
+	strip --strip-all bua
 
 install:
 	$(CC) $(OPTS) -o $(NAME) bua.cpp $(LIB) 
+	strip --strip-all bua
 	sudo cp bua /usr/bin/
 	sudo chown root /usr/bin/bua && sudo chmod 4755 /usr/bin/bua
 	rm bua
