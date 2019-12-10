@@ -116,13 +116,13 @@ static Args parseArguments(int argc, char *argv[]) {
 
 /* Accent/ special character values */
 static const int special_char_int[] = {
-    -31, -23, -19, -13, -6, -15, -47
+    -31, -23, -19, -13, -6, -15, -47, -63, -55, -51, -45, -38
 };
 static const string special_char[] = {
-    "á", "é", "í", "ó", "ú", "ñ", "Ñ"
+    "á", "é", "í", "ó", "ú", "ñ", "Ñ", "Á", "É", "Í", "Ó", "Ú"
 };
 
-#define NUM_SPECIAL_CHAR 7
+#define NUM_SPECIAL_CHAR 12
 
 /* Accent managing */
 string& parseString(string& str) {
