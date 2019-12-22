@@ -204,7 +204,7 @@ void parseBlockedBooks(vector<Book> &books){
     while(getline(reservationFile, storedBook[0])){
         
         /* We store the book information and the empty line after every book */
-        for(int i = 1; i < 5; i++)
+        for(int i = 0; i < 5; i++)
             getline(reservationFile, storedBook[i]);
 
         for(unsigned i = 0; i < books.size(); i++){
