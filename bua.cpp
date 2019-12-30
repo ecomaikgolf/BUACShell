@@ -257,13 +257,13 @@ vector<Book> parseBooks(const string &str) {
             for(unsigned i = 0; i < 4; i++)
                 getline(tmp, aux);
 
-            book.name = cleanStr(aux, delimiter);
+            book.name = parseString(cleanStr(aux, delimiter));
 
             getline(tmp,aux);
-            book.author = cleanStr(aux, delimiter);
+            book.author = parseString(cleanStr(aux, delimiter));
 
             getline(tmp,aux);
-            book.details = cleanStr(aux, delimiter);
+            book.details = parseString(cleanStr(aux, delimiter));
 
             books.push_back(book);
         }
