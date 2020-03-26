@@ -519,12 +519,19 @@ int main(int argc, char *argv[]){
     }
 
     CURL *curlHandler;
+    CURLcode statusCode;
     curlHandler = curl_easy_init();
     
     curl_easy_setopt(curlHandler, CURLOPT_URL, (baseURL + loginEnd).c_str());
     curl_easy_setopt(curlHandler, CURLOPT_USERAGENT, userAgent.c_str());
     curl_easy_setopt(curlHandler, CURLOPT_WRITEFUNCTION, curl_output);
-    curl_easy_perform(curlHandler);
+    statusCode = curl_easy_perform(curlHandler);
+
+    if(statusCode != CURLE_OK) {
+        const char *errorMessage = curl_easy_strerror(statusCode);
+        cout << RED("[!] Network Error:") << RED(errorMessage) << endl;
+        return -1;
+    }
 
     string tokenURL = parseAccessForm(tempBuffer);
 
@@ -535,7 +542,13 @@ int main(int argc, char *argv[]){
     curl_easy_setopt(curlHandler, CURLOPT_USERAGENT, userAgent.c_str());
     curl_easy_setopt(curlHandler, CURLOPT_POSTFIELDS, parameters.c_str());
     curl_easy_setopt(curlHandler, CURLOPT_WRITEFUNCTION, curl_output);
-    curl_easy_perform(curlHandler);
+    statusCode = curl_easy_perform(curlHandler);
+
+    if(statusCode != CURLE_OK) {
+        const char *errorMessage = curl_easy_strerror(statusCode);
+        cout << RED("[!] Network Error:") << RED(errorMessage) << endl;
+        return -1;
+    }
 
     std::size_t pos = tempBuffer.find("<p><strong>Acceso inv", TRESHOLD);
     if(pos != string::npos){
@@ -553,7 +566,13 @@ int main(int argc, char *argv[]){
     curl_easy_setopt(curlHandler, CURLOPT_USERAGENT, userAgent.c_str());
     curl_easy_setopt(curlHandler, CURLOPT_POSTFIELDS, parameters.c_str());
     curl_easy_setopt(curlHandler, CURLOPT_WRITEFUNCTION, curl_output);
-    curl_easy_perform(curlHandler);
+    statusCode = curl_easy_perform(curlHandler);
+
+    if(statusCode != CURLE_OK) {
+        const char *errorMessage = curl_easy_strerror(statusCode);
+        cout << RED("[!] Network Error:") << RED(errorMessage) << endl;
+        return -1;
+    }
 
     vector<Book> books = parseBooks(tempBuffer);
 
